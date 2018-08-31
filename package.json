@@ -1,0 +1,34 @@
+{
+  "name": "rewrite",
+  "version": "1.0.0",
+  "description": "重写一些方法",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js --name ",
+    "dist": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wave9/rewrite.git"
+  },
+  "keywords": [
+    "rewrite",
+    "js"
+  ],
+  "author": "lang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wave9/rewrite/issues"
+  },
+  "homepage": "https://github.com/wave9/rewrite#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.17.1",
+    "webpack-dev-server": "^3.1.7"
+  }
+}

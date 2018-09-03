@@ -55,11 +55,11 @@ const dealPatches = (node, currentPatches) => {
                 break;
             default:
                 throw new Error('Unknown patch type ' + currentPatch.type);
-
         }
     } )
 };
 
+// 给节点添加属性
 function setAttrs (node, props) {
     for (let key in props) {
         if(props.hasOwnProperty(key)){
@@ -72,6 +72,8 @@ function setAttrs (node, props) {
         }
     }
 }
+
+// 重新排列子元素
 function reorderChildren (node, moves) {
     let staticNodeList = _w.toArray(node.childNodes);
     let maps = {}; // 存储含有key特殊字段的节点
@@ -88,7 +90,7 @@ function reorderChildren (node, moves) {
 
     moves.forEach(move => {
         let index = move.index;
-        if (move.type === 0) { // remove item
+        if (move.type === REPLACE) { // remove item
             if (staticNodeList[index] === node.childNodes[index]) { // maybe have been removed for inserting
                 node.removeChild(node.childNodes[index])
             }

@@ -34,6 +34,7 @@ function dfsWalk(oldNode, newNode, index, patches) {
     if(newNode === null || newNode === undefined){
 
     }
+
     // 这里判断文本节点的差异
     else if (_w.isString(oldNode) && _w.isString(newNode)){
         if(newNode !== oldNode){
@@ -71,7 +72,7 @@ function dfsWalk(oldNode, newNode, index, patches) {
 }
 
 /**
- *
+ * 属性区分
  * @param oldNode
  * @param newNode
  */

@@ -14,7 +14,7 @@ export default class Element {
         let { tagName, attrs, children } = this,
             el = document.createElement(tagName);
 
-        // 给添加添加属性
+        // 给节点添加属性
         for(let propsName in attrs){
             if(attrs.hasOwnProperty(propsName)){
                 el.setAttribute(propsName, attrs[propsName]);

@@ -22,5 +22,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    devtool: "source-map"
 };

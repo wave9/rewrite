@@ -7,7 +7,6 @@ const ATTRS = 1;    // 属性
 const TEXT = 2;     // 文本内容
 const REORDER = 3;  // 重排序
 
-
 /**
  * 比较两棵树的差异
  * @param oldTree 旧树
@@ -28,12 +27,10 @@ export default function diff(oldTree, newTree) {
  * @param patches
  */
 function dfsWalk(oldNode, newNode, index, patches) {
-    let currentPatch = [];
+    let currentPatch = [];  // currentPatch 用于记录每一次遍历之后的区别
 
     // 如果oldNode被remove了
-    if(newNode === null || newNode === undefined){
-
-    }
+    if(newNode === null || newNode === undefined) { }
 
     // 这里判断文本节点的差异
     else if (_w.isString(oldNode) && _w.isString(newNode)){
@@ -45,7 +42,7 @@ function dfsWalk(oldNode, newNode, index, patches) {
         }
     }
 
-    // 比较属性间的不同
+    // 比较属性间的不同，这里是对 标签相同而且有着相同key值 的节点进行判断
     else if(oldNode.tagName === newNode.tagName && oldNode.key === newNode.key){
         let attrPatches = diffAttrs(oldNode, newNode);
         if(attrPatches){
@@ -55,7 +52,7 @@ function dfsWalk(oldNode, newNode, index, patches) {
             })
         }
 
-        // 递归进行子节点的diff比较
+        // 如果有着相同的父级，那么就可以递归进行子节点的diff比较
         diffChildren(oldNode.children, newNode.children, index, patches, currentPatch);
     }
 
@@ -72,7 +69,7 @@ function dfsWalk(oldNode, newNode, index, patches) {
 }
 
 /**
- * 属性区分
+ * 这里用于比较属性间的不同
  * @param oldNode
  * @param newNode
  */
@@ -84,7 +81,7 @@ const diffAttrs = function (oldNode, newNode) {
     let key, value;
     let attrsPatches = {};
 
-    // 如果存在不同的属性
+    // 如果存在不同的属性，也即新节点中相同属性的 value 与 旧节点中属性值的value 不同，那么我们就可以将这个区别记录下来，放到我们的 attrPatches中
     for(key in oldAttrs){
         if(oldAttrs.hasOwnProperty(key)){
             value = oldAttrs[key];
@@ -96,7 +93,7 @@ const diffAttrs = function (oldNode, newNode) {
         }
     }
 
-    // 如果存在新的属性
+    // 如果存在新的属性，也就是新节点中出现了旧节点中所没有的属性，那么我们也把他记录下来，放到我们的 attrPatches中
     for(key in newAttrs){
         if(newAttrs.hasOwnProperty(key)){
             value = newAttrs[key];
@@ -107,6 +104,7 @@ const diffAttrs = function (oldNode, newNode) {
         }
     }
 
+    // 什么都没有，返回null
     if(count === 0){
         return null;
     }

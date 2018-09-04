@@ -118,7 +118,7 @@ let listDiff = function(oldList, newList, key){
         moves: moves,
         children: children
     }
-}
+};
 
 /**
  *
@@ -146,7 +146,7 @@ function getKeyIndexAndFree(list, key){
 
 function getItemKey(item, key){
     if(!item || !key) return void 0;
-    return typeof key === "string" ? item[key] : key(item);
+    return typeof key === "string" ? item[key] : key;
 }
 
 export default listDiff;

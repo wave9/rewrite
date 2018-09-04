@@ -6,6 +6,13 @@ const ATTRS = 1;    // 属性
 const TEXT = 2;     // 文本内容
 const REORDER = 3;  // 重排序
 
+export default function patch(rootNode, patches) {
+    let walker = {
+        index: 0
+    };
+    walk(rootNode, walker, patches);
+};
+
 const walk = (node, walker, patches) => {
     let currentPatches = patches[walker.index];
 
@@ -22,14 +29,6 @@ const walk = (node, walker, patches) => {
     }
 };
 
-export default function patch(rootNode, patches) {
-    let walker = {
-        index: 0
-    };
-    walk(rootNode, walker, patches);
-
-};
-
 const dealPatches = (node, currentPatches) => {
     currentPatches.forEach( currentPatch => {
         switch (currentPatch.type) {
@@ -43,7 +42,7 @@ const dealPatches = (node, currentPatches) => {
                 reorderChildren(node, currentPatch.moves);
                 break;
             case ATTRS:
-                setAttrs(node, currentPatch.props);
+                setAttrs(node, currentPatch.attrs);
                 break;
             case TEXT:
                 if (node.textContent) {

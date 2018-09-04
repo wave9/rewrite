@@ -8,9 +8,9 @@ let ul = new Element(
         id: 'list'
     },
     [
-        new Element('li', { class: 'item' }, ['Item1']),
-        new Element('li', { class: 'item' }, ['Item2']),
-        new Element('li', { class: 'item' }, ['Item3']),
+        new Element('li', { class: 'item', key: 1 }, ['Item1']),
+        new Element('li', { class: 'item', key: 2 }, ['Item2']),
+        new Element('li', { class: 'item', key: 3 }, ['Item3']),
         new Element('li', { class: 'item', key: 4 }, ['Item4']),
     ]
 );
@@ -21,10 +21,10 @@ let ul2 = new Element(
         id: 'list'
     },
     [
-        new Element('li', { class: 'item' }, ['Item3']),
-        new Element('li', { class: 'item' }, ['Item2']),
-        new Element('li', { class: 'item', key: 4 }, ['Item4']),
-        new Element('li', { class: 'item' }, ['Item1']),
+        new Element('li', { class: 'item', key: 1 }, ['Item3']),
+        new Element('li', { class: 'item', key: 2 }, ['Item2']),
+        new Element('li', { class: 'item', key: 3 }, ['Item4']),
+        new Element('li', { class: 'item', key: 4, name: 1}, ['Item1']),
     ]
 );
 

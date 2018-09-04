@@ -6,5 +6,18 @@ let _w = exports;
  * @returns { string }
  */
 _w.type = function (obj) {
-    return Object.prototype.toString.call(obj).slice(8, -1);
+    return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+};
+
+/**
+ * 判断数组
+ * @param obj
+ * @returns { Boolean }
+ */
+_w.isArray = function (obj) {
+    if(Array.isArray){
+        return Array.isArray(obj);
+    }else{
+        return _w.type(obj) === "array";
+    }
 };
